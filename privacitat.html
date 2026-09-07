@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de privacitat — Comunitat EduTicTac</title>
+  <meta name="description" content="Política de privacitat de les aplicacions de la Comunitat EduTicTac: quines dades demanem, per a què i com controlar-les.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-100 min-h-screen font-sans text-slate-800">
+
+  <div class="max-w-3xl mx-auto px-4 py-10 flex flex-col gap-6">
+
+    <!-- Header -->
+    <header class="bg-white rounded-2xl shadow-sm p-8 flex flex-col items-center gap-3 text-center">
+      <a href="index.html">
+        <img src="logo.png" alt="EduTicTac" class="max-w-xs w-full h-auto">
+      </a>
+      <h1 class="font-display text-3xl font-bold text-blue-600 tracking-tight">Política de privacitat</h1>
+      <p class="text-slate-500 text-sm leading-relaxed">
+        Què fem amb les teues dades a les aplicacions de la Comunitat EduTicTac.
+      </p>
+    </header>
+
+    <!-- Principis -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8" aria-labelledby="principis-title">
+      <p class="text-blue-600 font-display font-semibold uppercase tracking-wide text-xs mb-2">En quatre línies</p>
+      <h2 id="principis-title" class="font-display text-2xl font-bold text-slate-900 tracking-tight mb-4">
+        Principis de la comunitat
+      </h2>
+      <ul class="space-y-3 text-slate-600 leading-relaxed">
+        <li class="flex gap-3">
+          <span aria-hidden="true">🔓</span>
+          <span><strong class="text-slate-900">Programari lliure.</strong> El codi font de totes les aplicacions és públic i es pot auditar a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es" target="_blank" rel="noopener">git.edutictac.es</a>.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">🚫</span>
+          <span><strong class="text-slate-900">Sense publicitat ni venda de dades.</strong> No mostrem anuncis ni compartim ni venem dades a cap empresa.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">🧩</span>
+          <span><strong class="text-slate-900">Dades mínimes.</strong> Cada aplicació només demana el que necessita per funcionar; la majoria no demanen res.</span>
+        </li>
+        <li class="flex gap-3">
+          <span aria-hidden="true">🖥️</span>
+          <span><strong class="text-slate-900">Servidors propis.</strong> Les aplicacions s'allotgen en infraestructura pròpia de la comunitat, no en serveis de tercers com Google o Firebase.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Aplicacions -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8" aria-labelledby="apps-title">
+      <p class="text-blue-600 font-display font-semibold uppercase tracking-wide text-xs mb-2">Servei a servei</p>
+      <h2 id="apps-title" class="font-display text-2xl font-bold text-slate-900 tracking-tight mb-4">
+        Aplicacions
+      </h2>
+
+      <div class="flex flex-col gap-6">
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            Banc de recursos <span class="text-xs font-sans font-normal text-slate-400">recursos.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Directori de jocs educatius. No cal crear cap compte: la identitat és anònima (una cookie tècnica sense dades personals) i s'usa només per a recordar les teues valoracions i favorits.</p>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2"><strong class="text-slate-900">Dades:</strong> valoracions, reportes d'enllaços trencats i favorits, associats a la cookie anònima. Sense seguiment, sense publicitat, sense tercers.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/recursos" target="_blank" rel="noopener">git.edutictac.es/Edutictac/recursos</a></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            EduMusic <span class="text-xs font-sans font-normal text-slate-400">edumusic.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Jocs musicals interactius. No cal crear cap compte per a jugar.</p>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2"><strong class="text-slate-900">Dades:</strong> si vols aparèixer al rànquing, tries lliurement un pseudònim; només es guarda eixe nom i la puntuació, mai dades personals. Sense seguiment, sense publicitat, sense tercers.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/edumusic" target="_blank" rel="noopener">git.edutictac.es/Edutictac/edumusic</a></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            EduHoot <span class="text-xs font-sans font-normal text-slate-400">eduhoot.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Joc de preguntes tipus concurs. L'alumnat que juga no necessita cap compte: només tria un pseudònim per a eixa partida, que desapareix en acabar.</p>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2"><strong class="text-slate-900">Dades:</strong> el professorat que crea qüestionaris té un accés propi (correu) per gestionar el seu material. Sense publicitat, sense tercers.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure (CC BY-SA 4.0) · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/eduhoot" target="_blank" rel="noopener">git.edutictac.es/Edutictac/eduhoot</a></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            JClic <span class="text-xs font-sans font-normal text-slate-400">jclic.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Biblioteca d'activitats educatives. No es demana cap dada: no cal compte ni identificar-se per a fer les activitats.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/jclic" target="_blank" rel="noopener">git.edutictac.es/Edutictac/jclic</a></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            Blockly Games <span class="text-xs font-sans font-normal text-slate-400">blockly.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Jocs de programació per blocs. No cal cap compte; el progrés queda només al navegador de l'alumne.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure (Apache-2.0) · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/blockly-games" target="_blank" rel="noopener">git.edutictac.es/Edutictac/blockly-games</a></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-5">
+          <h3 class="font-display text-lg font-semibold text-slate-900 mb-2">
+            Robòtica <span class="text-xs font-sans font-normal text-slate-400">robotics.edutictac.es</span>
+          </h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-2">Simulador de micro:bit i ESP32 al navegador. No hi ha cap servidor de dades: el progrés i el pseudònim de l'alumnat es guarden només en l'ordinador o tauleta de l'aula (<code>localStorage</code>).</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Programari lliure (MIT) · codi a <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/edutictac-robotics-v2" target="_blank" rel="noopener">git.edutictac.es/Edutictac/edutictac-robotics-v2</a></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Exercici de drets -->
+    <section class="bg-white rounded-2xl shadow-sm p-6 sm:p-8" aria-labelledby="drets-title">
+      <h2 id="drets-title" class="font-display text-xl font-bold text-slate-900 tracking-tight mb-3">
+        Exportar o eliminar les teues dades
+      </h2>
+      <p class="text-sm text-slate-600 leading-relaxed mb-2">
+        Com que la majoria d'aplicacions no et demanen cap dada personal, no hi ha res a exportar
+        ni a eliminar. On sí que es guarda alguna cosa (valoracions o rànquings sota un pseudònim
+        o cookie anònima), pots demanar-ne l'eliminació escrivint a la comunitat pel canal de
+        <a class="text-blue-600 hover:underline" href="https://telegram.me/joinchat/AF9KBj1o0IXttv35k7NAug" target="_blank" rel="noopener">Telegram</a>
+        o obrint una incidència a la <a class="text-blue-600 hover:underline" href="https://git.edutictac.es" target="_blank" rel="noopener">forja</a>.
+      </p>
+      <p class="text-sm text-slate-600 leading-relaxed">
+        La documentació completa del projecte —incloent-hi la metodologia de revisió de
+        privacitat servei a servei— és pública al repositori
+        <a class="text-blue-600 hover:underline" href="https://git.edutictac.es/Edutictac/edutictac-commons" target="_blank" rel="noopener">edutictac-commons</a>.
+      </p>
+    </section>
+
+    <p class="text-center text-xs text-slate-400">Última revisió: setembre de 2026 · <a class="hover:underline" href="index.html">Tornar a l'inici</a></p>
+
+  </div>
+
+</body>
+</html>
