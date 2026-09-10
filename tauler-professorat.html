@@ -31,7 +31,7 @@
       </nav>
 
       <p class="dashboard-note">
-        Maqueta estàtica. Les accions mostren la posició prevista dins del tauler, no executen canvis.
+        La generació de credencials usa la sessió docent de Recursos. La resta de mòduls continua com a maqueta de treball.
       </p>
     </aside>
 
@@ -54,52 +54,42 @@
                 <p>Creació de codis i PIN sense demanar correu, nom ni grup visible a l'alumne.</p>
               </div>
               <div class="button-row">
-                <a class="button primary" href="#">Generar alumnat</a>
-                <a class="button" href="#">Imprimir targetes</a>
+                <a class="button" href="https://recursos.edutictac.es/api/auth/login">Iniciar sessió</a>
+                <button id="generateStudentsBtn" class="button primary" type="button">Generar alumnat</button>
+                <button id="printStudentsBtn" class="button" type="button" disabled>Imprimir targetes</button>
               </div>
             </div>
 
-            <div class="split-form" aria-label="Opcions de generació">
+            <form id="studentBatchForm" class="split-form" aria-label="Opcions de generació">
               <div class="field">
                 <label for="batch-size">Quantitat</label>
-                <input id="batch-size" value="25" inputmode="numeric">
+                <input id="batch-size" value="25" inputmode="numeric" min="1" max="120">
               </div>
               <div class="field">
-                <label for="internal-group">Grup intern</label>
-                <select id="internal-group">
-                  <option>2n ESO B · 2026-2027</option>
-                  <option>5é Primària A · 2026-2027</option>
+                <label for="pin-length">Longitud PIN</label>
+                <select id="pin-length">
+                  <option value="4">4 dígits</option>
+                  <option value="6">6 dígits</option>
                 </select>
               </div>
-            </div>
+            </form>
 
-            <table class="credentials-table" aria-label="Mostra de credencials generades" style="margin-top:16px">
+            <p id="batchFeedback" class="form-feedback" role="status" aria-live="polite">
+              Comprovant sessió docent...
+            </p>
+
+            <table id="credentialsTable" class="credentials-table" aria-label="Credencials generades" style="margin-top:16px">
               <thead>
                 <tr>
                   <th>Codi</th>
                   <th>PIN</th>
-                  <th>Ús</th>
+                  <th>Ús previst</th>
                   <th>Estat</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><span class="code-pill">A7K4Q</span></td>
-                  <td><span class="code-pill">8291</span></td>
-                  <td>Banc de recursos</td>
-                  <td><span class="status ready">Actiu</span></td>
-                </tr>
-                <tr>
-                  <td><span class="code-pill">M2P9X</span></td>
-                  <td><span class="code-pill">4068</span></td>
-                  <td>EduHoot</td>
-                  <td><span class="status ready">Actiu</span></td>
-                </tr>
-                <tr>
-                  <td><span class="code-pill">T5C3N</span></td>
-                  <td><span class="code-pill">1730</span></td>
-                  <td>Sense activitat</td>
-                  <td><span class="status private">Reservat</span></td>
+              <tbody id="credentialsBody">
+                <tr class="empty-row">
+                  <td colspan="4">Encara no s'han generat credencials en aquesta sessió.</td>
                 </tr>
               </tbody>
             </table>
@@ -226,5 +216,148 @@
       </section>
     </main>
   </div>
+  <script>
+    const API_BASE = "https://recursos.edutictac.es/api";
+    const form = document.querySelector("#studentBatchForm");
+    const generateBtn = document.querySelector("#generateStudentsBtn");
+    const printBtn = document.querySelector("#printStudentsBtn");
+    const countInput = document.querySelector("#batch-size");
+    const pinLengthSelect = document.querySelector("#pin-length");
+    const feedback = document.querySelector("#batchFeedback");
+    const credentialsBody = document.querySelector("#credentialsBody");
+    let lastCredentials = [];
+
+    function setFeedback(message, type = "") {
+      feedback.textContent = message;
+      feedback.className = `form-feedback ${type}`.trim();
+    }
+
+    async function api(path, options = {}) {
+      const response = await fetch(`${API_BASE}${path}`, {
+        method: options.method || "GET",
+        credentials: "include",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: options.body ? JSON.stringify(options.body) : undefined,
+      });
+      if (!response.ok) {
+        const error = new Error(`HTTP ${response.status}`);
+        error.status = response.status;
+        throw error;
+      }
+      return response.json();
+    }
+
+    function renderCredentials(credentials) {
+      lastCredentials = credentials;
+      credentialsBody.innerHTML = "";
+      if (!credentials.length) {
+        credentialsBody.innerHTML = '<tr class="empty-row"><td colspan="4">No s\'han rebut credencials.</td></tr>';
+        printBtn.disabled = true;
+        return;
+      }
+      const fragment = document.createDocumentFragment();
+      credentials.forEach((credential) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><span class="code-pill"></span></td>
+          <td><span class="code-pill"></span></td>
+          <td>Banc de recursos i serveis Commons</td>
+          <td><span class="status ready">Creat</span></td>
+        `;
+        row.children[0].querySelector("span").textContent = credential.code || "";
+        row.children[1].querySelector("span").textContent = credential.pin || "";
+        fragment.append(row);
+      });
+      credentialsBody.append(fragment);
+      printBtn.disabled = false;
+    }
+
+    async function refreshTeacherSession() {
+      try {
+        const me = await api("/auth/me");
+        if (me.logged_in) {
+          generateBtn.disabled = false;
+          setFeedback("Sessió docent detectada. Pots generar credencials.", "ok");
+          return;
+        }
+        generateBtn.disabled = true;
+        setFeedback("Cal iniciar sessió com a professorat a Recursos abans de generar credencials.", "warn");
+      } catch {
+        generateBtn.disabled = true;
+        setFeedback("No s'ha pogut comprovar la sessió docent amb Recursos.", "error");
+      }
+    }
+
+    async function generateStudents() {
+      const count = Math.max(1, Math.min(120, Number(countInput.value || 0)));
+      const pinLength = Number(pinLengthSelect.value) === 6 ? 6 : 4;
+      generateBtn.disabled = true;
+      setFeedback("Generant credencials...");
+      try {
+        const data = await api("/teacher/student-batches", {
+          method: "POST",
+          body: { count, pin_length: pinLength },
+        });
+        const credentials = Array.isArray(data.credentials) ? data.credentials : [];
+        renderCredentials(credentials);
+        setFeedback(`${credentials.length} credencials generades correctament.`, "ok");
+      } catch (error) {
+        if (error.status === 401) {
+          setFeedback("La sessió docent no és vàlida. Inicia sessió a Recursos i torna al tauler.", "error");
+        } else {
+          setFeedback("No s'han pogut generar les credencials. Torna-ho a provar.", "error");
+        }
+      } finally {
+        generateBtn.disabled = false;
+      }
+    }
+
+    function printCredentials() {
+      if (!lastCredentials.length) return;
+      const rows = lastCredentials.map((credential) => `
+        <article>
+          <strong>${credential.code || ""}</strong>
+          <span>PIN ${credential.pin || ""}</span>
+        </article>
+      `).join("");
+      const printWindow = window.open("", "edutictac-credentials", "width=900,height=700");
+      if (!printWindow) return;
+      printWindow.document.write(`
+        <!doctype html>
+        <html lang="ca">
+        <head>
+          <meta charset="utf-8">
+          <title>Credencials alumnat</title>
+          <style>
+            body { font-family: system-ui, sans-serif; margin: 24px; color: #111827; }
+            h1 { font-size: 20px; margin: 0 0 18px; }
+            section { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            article { border: 1px solid #94a3b8; border-radius: 8px; padding: 18px; text-align: center; break-inside: avoid; }
+            strong { display: block; font-size: 28px; letter-spacing: .08em; }
+            span { display: block; margin-top: 8px; font-size: 18px; }
+          </style>
+        </head>
+        <body>
+          <h1>EduTicTac Commons · credencials d'alumnat</h1>
+          <section>${rows}</section>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      generateStudents();
+    });
+    generateBtn.addEventListener("click", generateStudents);
+    printBtn.addEventListener("click", printCredentials);
+    refreshTeacherSession();
+  </script>
 </body>
 </html>
