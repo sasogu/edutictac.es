@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tauler del professorat — EduTicTac Commons</title>
+  <meta name="description" content="Maqueta del tauler del professorat d'EduTicTac Commons.">
+  <link rel="stylesheet" href="styles/fonts.css">
+  <link rel="stylesheet" href="styles/tailwind.css">
+  <link rel="stylesheet" href="styles/dashboards.css">
+</head>
+<body class="dashboard-body font-sans">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Seccions del tauler">
+      <div class="dashboard-brand">
+        <img src="logo.png" alt="EduTicTac">
+        <div>
+          <strong>EduTicTac Commons</strong>
+          <span>Tauler del professorat</span>
+        </div>
+      </div>
+
+      <nav class="dashboard-nav">
+        <a href="#" aria-current="page"><span class="nav-mark">RS</span>Resum</a>
+        <a href="#"><span class="nav-mark">AL</span>Alumnat</a>
+        <a href="#"><span class="nav-mark">BR</span>Banc de recursos</a>
+        <a href="#"><span class="nav-mark">EH</span>EduHoot</a>
+        <a href="#"><span class="nav-mark">WK</span>Wikimanuals</a>
+        <a href="#"><span class="nav-mark">FG</span>Forja</a>
+        <a href="#"><span class="nav-mark">PR</span>Progrés</a>
+      </nav>
+
+      <p class="dashboard-note">
+        Maqueta estàtica. Les accions mostren la posició prevista dins del tauler, no executen canvis.
+      </p>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Commons</p>
+          <h1>Tauler del professorat</h1>
+          <p>Vista inicial per gestionar alumnat, recursos i serveis de treball des d'un espai propi del professorat.</p>
+        </div>
+        <div class="session-chip"><strong>Professorat</strong> · samuel@edutictac</div>
+      </header>
+
+      <section class="dashboard-grid" aria-label="Contingut principal">
+        <div>
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Credencials d'alumnat</h2>
+                <p>Creació de codis i PIN sense demanar correu, nom ni grup visible a l'alumne.</p>
+              </div>
+              <div class="button-row">
+                <a class="button primary" href="#">Generar alumnat</a>
+                <a class="button" href="#">Imprimir targetes</a>
+              </div>
+            </div>
+
+            <div class="split-form" aria-label="Opcions de generació">
+              <div class="field">
+                <label for="batch-size">Quantitat</label>
+                <input id="batch-size" value="25" inputmode="numeric">
+              </div>
+              <div class="field">
+                <label for="internal-group">Grup intern</label>
+                <select id="internal-group">
+                  <option>2n ESO B · 2026-2027</option>
+                  <option>5é Primària A · 2026-2027</option>
+                </select>
+              </div>
+            </div>
+
+            <table class="credentials-table" aria-label="Mostra de credencials generades" style="margin-top:16px">
+              <thead>
+                <tr>
+                  <th>Codi</th>
+                  <th>PIN</th>
+                  <th>Ús</th>
+                  <th>Estat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="code-pill">A7K4Q</span></td>
+                  <td><span class="code-pill">8291</span></td>
+                  <td>Banc de recursos</td>
+                  <td><span class="status ready">Actiu</span></td>
+                </tr>
+                <tr>
+                  <td><span class="code-pill">M2P9X</span></td>
+                  <td><span class="code-pill">4068</span></td>
+                  <td>EduHoot</td>
+                  <td><span class="status ready">Actiu</span></td>
+                </tr>
+                <tr>
+                  <td><span class="code-pill">T5C3N</span></td>
+                  <td><span class="code-pill">1730</span></td>
+                  <td>Sense activitat</td>
+                  <td><span class="status private">Reservat</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Serveis de treball</h2>
+                <p>Accés docent a les eines que formen el Commons.</p>
+              </div>
+            </div>
+
+            <div class="tool-list">
+              <div class="tool-item">
+                <span class="tool-mark">BR</span>
+                <div>
+                  <h3>Banc de recursos</h3>
+                  <p>Favorits, valoracions, recursos de classe i activitat de l'alumnat.</p>
+                </div>
+                <span class="status ready">Connectat</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">EH</span>
+                <div>
+                  <h3>EduHoot</h3>
+                  <p>Qüestionaris, partides de classe i historial docent.</p>
+                </div>
+                <span class="status todo">Pendent</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">WK</span>
+                <div>
+                  <h3>Wikimanuals</h3>
+                  <p>Materials de referència i documentació comunitària.</p>
+                </div>
+                <span class="status ready">SSO</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">FG</span>
+                <div>
+                  <h3>Forja</h3>
+                  <p>Projectes, incidències i codi font dels serveis.</p>
+                </div>
+                <span class="status ready">SSO</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside>
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Resum</h2>
+                <p>Indicadors de treball per a la sessió docent.</p>
+              </div>
+            </div>
+            <div class="metric-grid">
+              <div class="metric"><strong>76</strong><span>credencials</span></div>
+              <div class="metric"><strong>41</strong><span>actives</span></div>
+              <div class="metric"><strong>12</strong><span>recursos</span></div>
+              <div class="metric"><strong>3</strong><span>grups interns</span></div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Activitat recent</h2>
+              </div>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="tool-mark">AL</span>
+                <div>
+                  <h3>25 credencials generades</h3>
+                  <p>2n ESO B · fa 8 minuts</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">BR</span>
+                <div>
+                  <h3>Recurs afegit a classe</h3>
+                  <p>Programació amb blocs · ahir</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">EH</span>
+                <div>
+                  <h3>Qüestionari preparat</h3>
+                  <p>Competència digital · aquesta setmana</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Pròxims mòduls</h2>
+              </div>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="tool-mark">EV</span>
+                <div>
+                  <h3>Evidències</h3>
+                  <p>Recollida lleugera de treballs i captures.</p>
+                </div>
+                <span class="status todo">Disseny</span>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">IN</span>
+                <div>
+                  <h3>Informes</h3>
+                  <p>Lectura agregada sense dades personals innecessàries.</p>
+                </div>
+                <span class="status todo">Disseny</span>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

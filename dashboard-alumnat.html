@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tauler de l'alumnat — EduTicTac Commons</title>
+  <meta name="description" content="Maqueta del tauler de l'alumnat d'EduTicTac Commons.">
+  <link rel="stylesheet" href="styles/fonts.css">
+  <link rel="stylesheet" href="styles/tailwind.css">
+  <link rel="stylesheet" href="styles/dashboards.css">
+</head>
+<body class="dashboard-body font-sans">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" aria-label="Seccions del tauler">
+      <div class="dashboard-brand">
+        <img src="logo.png" alt="EduTicTac">
+        <div>
+          <strong>EduTicTac Commons</strong>
+          <span>Tauler de l'alumnat</span>
+        </div>
+      </div>
+
+      <nav class="dashboard-nav">
+        <a href="#" aria-current="page"><span class="nav-mark">IN</span>Inici</a>
+        <a href="#"><span class="nav-mark">BR</span>Recursos</a>
+        <a href="#"><span class="nav-mark">EH</span>EduHoot</a>
+        <a href="#"><span class="nav-mark">BL</span>Blockly</a>
+        <a href="#"><span class="nav-mark">JC</span>JClic</a>
+        <a href="#"><span class="nav-mark">AJ</span>Ajuda</a>
+      </nav>
+
+      <p class="dashboard-note">
+        Accés amb codi i PIN. El grup és intern del professorat i no forma part de l'entrada de l'alumnat.
+      </p>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Commons</p>
+          <h1>Tauler de l'alumnat</h1>
+          <p>Entrada senzilla per continuar activitats, obrir recursos de classe i accedir als serveis compatibles amb el codi d'alumne.</p>
+        </div>
+        <div class="session-chip"><strong>Codi</strong> · A7K4Q</div>
+      </header>
+
+      <section class="dashboard-grid" aria-label="Contingut principal">
+        <div>
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Accés</h2>
+                <p>Identificació mínima amb codi i PIN.</p>
+              </div>
+              <div class="button-row">
+                <a class="button primary" href="#">Entrar</a>
+              </div>
+            </div>
+            <div class="split-form">
+              <div class="field">
+                <label for="student-code">Codi</label>
+                <input id="student-code" value="A7K4Q">
+              </div>
+              <div class="field">
+                <label for="student-pin">PIN</label>
+                <input id="student-pin" value="8291" type="password">
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Continuar</h2>
+                <p>Activitats i serveis oberts per a aquesta sessió.</p>
+              </div>
+            </div>
+
+            <div class="tool-list">
+              <div class="tool-item">
+                <span class="tool-mark">BR</span>
+                <div>
+                  <h3>Banc de recursos</h3>
+                  <p>Recursos marcats pel professorat i favorits personals.</p>
+                </div>
+                <span class="status ready">Disponible</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">EH</span>
+                <div>
+                  <h3>EduHoot</h3>
+                  <p>Partides i qüestionaris oberts per a la classe.</p>
+                </div>
+                <span class="status todo">Pròxim</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">BL</span>
+                <div>
+                  <h3>Blockly Games</h3>
+                  <p>Reptes de programació i pràctica individual.</p>
+                </div>
+                <span class="status ready">Obert</span>
+              </div>
+              <div class="tool-item">
+                <span class="tool-mark">JC</span>
+                <div>
+                  <h3>JClic</h3>
+                  <p>Activitats interactives seleccionades per etapa.</p>
+                </div>
+                <span class="status ready">Obert</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Progrés</h2>
+                <p>Indicadors visibles per a l'alumne dins del seu codi.</p>
+              </div>
+            </div>
+
+            <div class="progress-row">
+              <div>
+                <strong>Banc de recursos</strong>
+                <div class="progress-bar"><span style="width:72%"></span></div>
+              </div>
+              <span>72%</span>
+            </div>
+            <div class="progress-row">
+              <div>
+                <strong>Blockly Games</strong>
+                <div class="progress-bar"><span style="width:45%"></span></div>
+              </div>
+              <span>45%</span>
+            </div>
+            <div class="progress-row">
+              <div>
+                <strong>EduHoot</strong>
+                <div class="progress-bar"><span style="width:18%"></span></div>
+              </div>
+              <span>18%</span>
+            </div>
+          </article>
+        </div>
+
+        <aside>
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Hui</h2>
+                <p>Vista ràpida de la sessió.</p>
+              </div>
+            </div>
+            <div class="metric-grid">
+              <div class="metric"><strong>4</strong><span>activitats</span></div>
+              <div class="metric"><strong>2</strong><span>favorits</span></div>
+              <div class="metric"><strong>1</strong><span>pendent</span></div>
+              <div class="metric"><strong>0</strong><span>avisos</span></div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Activitat recent</h2>
+              </div>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="tool-mark">BR</span>
+                <div>
+                  <h3>Recurs completat</h3>
+                  <p>Fraccions amb blocs · fa 12 minuts</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">BL</span>
+                <div>
+                  <h3>Repte iniciat</h3>
+                  <p>Labyrinth 6 · ahir</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">BR</span>
+                <div>
+                  <h3>Favorit guardat</h3>
+                  <p>Lectura digital · aquesta setmana</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Privacitat</h2>
+              </div>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="tool-mark">ID</span>
+                <div>
+                  <h3>Sense nom ni correu</h3>
+                  <p>El codi identifica la sessió de treball sense mostrar dades personals.</p>
+                </div>
+              </div>
+              <div class="activity-item">
+                <span class="tool-mark">GP</span>
+                <div>
+                  <h3>Grup intern</h3>
+                  <p>El professorat pot organitzar grups sense demanar-los en l'accés.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
